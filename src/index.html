@@ -1,0 +1,50 @@
+<!--
+  **NOTE:** This is a template for index.html.
+  It uses ejs and htmlWebpackPlugin to generate a different index.html for each environment.
+  htmlWebpackPlugin will dynamically add references to the scripts and styles that it bundles
+  to this file. The generated bundles have hash-based filenames,
+  so it's necessary to add the references dynamically.
+  For more info on ejs, see http://www.embeddedjs.com/.
+  For examples of using it with htmlWebpackPlugin,
+  see https://github.com/jaketrent/html-webpack-template/blob/master/index.ejs
+  -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="https://www.youtube.com/player_api"> </script>
+  <!--
+    The htmlWebpackPlugin will parse the logic below so that trackJS is only added to the production version of index.html (since only webpack.config.prod.js provides the trackJS token)
+    This is an example of how to add features to index.html for only one environment.
+   -->
+  <% if (htmlWebpackPlugin.options.trackJSToken) { %>
+    <!-- BEGIN TRACKJS -->
+    <script type="text/javascript">
+      window._trackJs = { token: '<%=htmlWebpackPlugin.options.trackJSToken%>' };
+    </script>
+    <script type="text/javascript" src="https://cdn.trackjs.com/releases/current/tracker.js"></script>
+    <!-- END TRACKJS -->
+    <% } %>
+      <meta charset="UTF-8">
+      <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+  <html>
+
+  <body>
+    <article>
+      <h1>Leto <br>Redinger Dressage <br /> <span> <a href="http://redingerdressage.com" target="_blank">Gail Von Redinger</a></span></h1>
+      <h2><span><a href="http://centerlinescores.com/Horse/Details/1106638#filterBy=scores">Scores</a></span></h2>
+    </article>
+    <div id="blurb">
+    </div>
+    <div class="tv">
+      <div class="screen mute" id="tv"></div>
+    </div>
+  </body>
+
+  </html>
+</body>
+
+</html>
