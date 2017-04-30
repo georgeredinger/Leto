@@ -12,7 +12,10 @@
 <html lang="en">
 
 <head>
-  <script src="https://www.youtube.com/player_api"> </script>
+ <!--<script src="https://www.youtube.com/player_api">    </script>-->
+
+  @import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
+
   <!--
     The htmlWebpackPlugin will parse the logic below so that trackJS is only added to the production version of index.html (since only webpack.config.prod.js provides the trackJS token)
     This is an example of how to add features to index.html for only one environment.
@@ -29,9 +32,6 @@
       <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 </head>
 
-<body>
-  <html>
-
   <body>
     <article>
       <h1>Leto <br>Redinger Dressage <br /> <span> <a href="http://redingerdressage.com" target="_blank">Gail Von Redinger</a></span></h1>
@@ -39,12 +39,8 @@
     </article>
     <div id="blurb">
     </div>
-    <div class="tv">
-      <div class="screen mute" id="tv"></div>
-    </div>
+    <div id="player"> </div>
   </body>
 
   </html>
-</body>
 
-</html>

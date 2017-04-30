@@ -1,196 +1,76 @@
 import './index.css';
+var currVid = 0;
+const vid = [{
+  'videoId': 'S7nOviZaMO0',
+  'startSeconds': 180,
+  'endSeconds': 190,
+  'suggestedQuality': 'hd720',
+  'message': 'first'
+},
+{
+  'videoId': 'wspUEkFo9oI',
+  'startSeconds': 120,
+  'endSeconds': 127,
+  'suggestedQuality': 'hd720',
+  'message': 'Wait, that\'s not Leto'
 
-// import {getUsers, deleteUser} from './api/userApi';
+},
+{
+  'videoId': 'PZpYZ3xYfQE',
+  'startSeconds': 120,
+  'endSeconds': 141,
+  'suggestedQuality': 'hd720',
+  'message': 'Leto Transitions'
+},
+{
+  'videoId': 's9cgFPB-lD4',
+  'startSeconds': 120,
+  'endSeconds': 141,
+  'suggestedQuality': 'hd720',
+  'message': 'Leto at Spokane Sport Horse'
 
-// // Populate table of users via API call.
-// getUsers().then(result => {
-//   let usersBody = "";
+},
+{
+  'videoId': 'SAm34wutr2w',
+  'startSeconds': 120,
+  'endSeconds': 141,
+  'suggestedQuality': 'hd720',
+  'message': 'Leto winning at SSH'
 
-//   result.forEach(user => {
-//     usersBody+= `<tr>
-//       <td><a href="#" data-id="${user.id}" class="deleteUser">Delete</a></td>
-//       <td>${user.id}</td>
-//       <td>${user.firstName}</td>
-//       <td>${user.lastName}</td>
-//       <td>${user.email}</td>
-//       </tr>`
-//   });
+},
+{
+  'videoId': 'v2dzXbJhz9k',
+  'startSeconds': 120,
+  'endSeconds': 141,
+  'suggestedQuality': 'hd720',
+  'message': 'Leto at home Winter'
 
-//   global.document.getElementById('users').innerHTML = usersBody;
+},
+{
+  'videoId': 'HSZONtn0m8U',
+  'startSeconds': 120,
+  'endSeconds': 141,
+  'suggestedQuality': 'hd720',
+  'message': 'Leto at home Summer'
 
-//   const deleteLinks = global.document.getElementsByClassName('deleteUser');
+},
+{
+  'videoId': '_SBfBp6oN-Y',
+  'startSeconds': 120,
+  'endSeconds': 141,
+  'suggestedQuality': 'hd720',
+  'message': 'Gail\'s goof'
 
-//   // Must use array.from to create a real array from a DOM collection
-//   // getElementsByClassname only returns an "array like" object
-//   Array.from(deleteLinks, link => {
-//     link.onclick = function(event) {
-//       const element = event.target;
-//       event.preventDefault();
-//       deleteUser(element.attributes["data-id"].value);
-//       const row = element.parentNode.parentNode;
-//       row.parentNode.removeChild(row);
-//     };
-//   });
-// });
-
- var tv,
-    playerDefaults = {
-      autoplay: 0,
-      autohide: 1,
-      modestbranding: 0,
-      rel: 0,
-      showinfo: 0,
-      controls: 0,
-      disablekb: 1,
-      enablejsapi: 0,
-      iv_load_policy: 3
-    };
-  var vid = [{
-    'videoId': 'S7nOviZaMO0',
-    'startSeconds': 180,
-    'endSeconds': 190,
-    'suggestedQuality': 'hd720',
-    'message': 'first'
-  },
-  {
-    'videoId': 'wspUEkFo9oI',
-    'startSeconds': 120,
-    'endSeconds': 127,
-    'suggestedQuality': 'hd720',
-    'message': 'Wait, that\'s not Leto'
-
-  },
-  {
-    'videoId': 'PZpYZ3xYfQE',
-    'startSeconds': 120,
-    'endSeconds': 141,
-    'suggestedQuality': 'hd720',
-    'message': 'Leto Transitions'
-  },
-  {
-    'videoId': 's9cgFPB-lD4',
-    'startSeconds': 120,
-    'endSeconds': 141,
-    'suggestedQuality': 'hd720',
-    'message': 'Leto at Spokane Sport Horse'
-
-  },
-  {
-    'videoId': 'SAm34wutr2w',
-    'startSeconds': 120,
-    'endSeconds': 141,
-    'suggestedQuality': 'hd720',
-    'message': 'Leto winning at SSH'
-
-  },
-  {
-    'videoId': 'v2dzXbJhz9k',
-    'startSeconds': 120,
-    'endSeconds': 141,
-    'suggestedQuality': 'hd720',
-    'message': 'Leto at home Winter'
-
-  },
-  {
-    'videoId': 'HSZONtn0m8U',
-    'startSeconds': 120,
-    'endSeconds': 141,
-    'suggestedQuality': 'hd720',
-    'message': 'Leto at home Summer'
-
-  },
-  {
-    'videoId': '_SBfBp6oN-Y',
-    'startSeconds': 120,
-    'endSeconds': 141,
-    'suggestedQuality': 'hd720',
-    'message': 'Gail\'s goof'
-
-  },
-  {
-    'videoId': 'CCWxicZFaVU',
-    'startSeconds': 120,
-    'endSeconds': 141,
-    'suggestedQuality': 'hd720',
-    'message': 'Leto cool'
-
-  }
-
-
-
-
-  ],
-    randomVid = Math.floor(Math.random() * vid.length),
-    currVid = randomVid;
-
-
-
-function onPlayerReady() {
-  tv.loadVideoById(vid[currVid]);
-  tv.mute();
+},
+{
+  'videoId': 'CCWxicZFaVU',
+  'startSeconds': 120,
+  'endSeconds': 141,
+  'suggestedQuality': 'hd720',
+  'message': 'Leto cool'
 }
+];
 
-function onPlayerStateChange(e) {
-  if (e.data === 1) {
-    document.getElementById('tv').className += 'active';
-
-
-  } else if (e.data === 2) {
-
-    if (currVid === vid.length - 1) {
-      currVid = 0;
-    } else {
-      currVid++;
-    }
-    console.log(vid[currVid].message);
-    document.getElementById("blurb").innerHTML = vid[currVid].message;
-    tv.loadVideoById(vid[currVid]);
-    tv.seekTo(vid[currVid].startSeconds);
-  }
-}
-
-window.onYouTubePlayerAPIReady = function () {
-    tv = new YT.Player('tv', {
-      events: {
-        'onReady': onPlayerReady,
-        'onStateChange': onPlayerStateChange
-      },
-      playerVars: playerDefaults
-    });
-    console.log("onYouTubePlayerAPIReady");
-  }
-
-var checkYT = setInterval(function () {
-        console.log("tick");
-
-    if(YT.loaded){
-        //...setup video here using YT.Player()
-        var tag = document.createElement('script');
-  tag.src = 'https://www.youtube.com/player_api';
-  var firstScriptTag = document.getElementsByTagName('script')[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
- /*global YT*/
-
-      console.log("loaded"); // should do something here, but for now YT gets loaded
-
-        clearInterval(checkYT);
-    }
-}, 100);
-
-
-
-  // var tag = document.createElement('script');
-  // tag.src = 'https://www.youtube.com/player_api';
-  // var firstScriptTag = document.getElementsByTagName('script')[0];
-  // firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-function getActualWidth() {
-  var actualWidth = window.innerWidth ||
-    document.documentElement.clientWidth ||
-    document.body.clientWidth ||
-    document.body.offsetWidth;
-    return actualWidth;
-}
 
 function getActualHeight() {
   var actualHeight = window.innerHeight ||
@@ -201,39 +81,105 @@ function getActualHeight() {
   return actualHeight;
 
 }
+function getActualWidth() {
+  var actualWidth = window.innerWidth ||
+    document.documentElement.clientWidth ||
+    document.body.clientWidth ||
+    document.body.offsetWidth;
 
-
-function vidRescale() {
-  var w = getActualWidth() + 200;
-  var h = getActualHeight() + 200;
-  var newHeight = 0;
-  var newWidth = 0;
-  //var newLeft=0;
-  var element = document.getElementById('tv');
-  // console.log("w/h " + w / h);
-  // if (w / h > 16 / 9) {
-  element.style.width = (w).toString + "px";
-  //  newHeight = (w / 16 * 9);
-  newHeight = h;
-  newWidth = w;
-  element.style.height = (newHeight).toString() + "px";
-  element.style.width = (newWidth).toString() + "px";
-
-  newWidth = getActualWidth();
-  element.style.left = "0px";
-  // } else {
-  //  // newWidth = (h / 9 * 16);
-  //   newWidth=getActualWidth();
-  //   element.style.width = (newWidth).toString() + "px";
-  //   element.style.height = (h).toString() + "px";
-  //   // newLeft = -(getActualWidth() - w) / 2;
-  //   newLeft = 0;
-  //   element.style.left = (newLeft).toString() + "px";
-  // }
-  element.style.fill = 'lime';
-  // console.log("vidRescale " + element.style.left + "," + element.style.width + "," + element.style.height);
+  return actualWidth;
 
 }
-window.onresize = vidRescale;
-window.onload = vidRescale;
-//window.onload = doVideo;
+
+
+//  function vidRescale(){
+
+//     var w = $(window).width() + 200,
+//       h = $(window).height() + 200;
+
+//     if (w/h > 16/9){
+//       tv.setSize(w, w/16*9);
+//       $('.tv .screen').css({'left': '0px'});
+//     } else {
+//       tv.setSize(h/9*16, h);
+//       $('.tv .screen').css({'left': -($('.tv .screen').outerWidth()-w)/2});
+//     }
+//   }
+
+
+
+function resizePlayer() {
+  var h = getActualHeight();
+  var w = getActualWidth();
+  console.log(h,w);
+  var element = document.getElementById('player');
+  element.style.height = h + "px";
+  element.style.width = w + "px";
+
+}
+
+window.onresize = resizePlayer;
+window.onload = resizePlayer;
+// 2. This code loads the IFrame Player API code asynchronously.
+
+// 3. This function creates an <iframe> (and YouTube player)
+//    after the API code downloads.
+var player;
+
+/* eslint-disable no-unused-vars */
+window.onYouTubeIframeAPIReady = function() {
+  console.log("onYoutubeIframeAPIReady");
+  player = new YT.Player('player', {
+    height: '300',
+    width: '95%',
+    autoplay: 0,
+    autohide: 1,
+    rel: 0,
+    showinfo: 0,
+    controls: 0,
+    disablekb: 1,
+    enablejsapi: 1,
+    iv_load_policy: 3,
+    modestbranding: 1,
+    //                allowfullscreen: true,
+    videoId: 'CCWxicZFaVU',
+    events: {
+      'onReady': onPlayerReady,
+      'onStateChange': onPlayerStateChange
+    }
+  });
+}
+
+// 4. The API will call this function when the video player is ready.
+function onPlayerReady(event) {
+  event.target.playVideo();
+  event.target.mute();
+  resizePlayer();
+
+}
+
+// 5. The API calls this function when the player's state changes.
+//    The function indicates that when playing a video (state=1),
+//    the player should play for six seconds and then stop.
+var done = false;
+/* global YT */
+function onPlayerStateChange(event) {
+  if (event.data == YT.PlayerState.PLAYING && !done) {
+    setTimeout(switchVideo, 6000);
+    done = true;
+  }
+}
+
+function switchVideo() {
+  setTimeout(switchVideo, 5000);
+  currVid = (currVid + 1) % vid.length;
+  player.loadVideoById(vid[currVid].videoId);
+  console.log(currVid);
+}
+
+var tag = document.createElement('script');
+
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+console.log("iframe_api initiated");
