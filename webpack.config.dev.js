@@ -6,13 +6,14 @@ export default {
   devtool: 'inline-source-map',
   noInfo: false,
   entry: [
-    path.resolve(__dirname, 'src/index')
+    path.resolve(__dirname, 'src/index'),
+    path.resolve(__dirname, 'src/thanks')
   ],
   target: 'web',
   output: {
     path: path.resolve(__dirname, 'src'),
     publicPath: '/',
-    filename: 'bundle.js'
+    filename: '[name].js'
   },
   plugins: [
     // Create HTML file that includes reference to bundled JS.
