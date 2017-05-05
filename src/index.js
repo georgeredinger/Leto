@@ -2,21 +2,7 @@ import './index.css';
 import $ from "jquery";
 
 var currVid = 0;
-const vid = [{
-  'videoId': 'S7nOviZaMO0',
-  'startSeconds': 180,
-  'endSeconds': 190,
-  'suggestedQuality': 'hd720',
-  'message': 'first'
-},
-{
-  'videoId': 'wspUEkFo9oI',
-  'startSeconds': 120,
-  'endSeconds': 127,
-  'suggestedQuality': 'hd720',
-  'message': 'Wait, that\'s not Leto'
-
-},
+const vid = [
 {
   'videoId': 'PZpYZ3xYfQE',
   'startSeconds': 120,
@@ -38,7 +24,6 @@ const vid = [{
   'endSeconds': 141,
   'suggestedQuality': 'hd720',
   'message': 'Leto winning at SSH'
-
 },
 {
   'videoId': 'v2dzXbJhz9k',
@@ -167,15 +152,16 @@ var done = false;
 /* global YT */
 function onPlayerStateChange(event) {
   if (event.data == YT.PlayerState.PLAYING && !done) {
-    setTimeout(switchVideo, 6000);
+    setTimeout(switchVideo, 15000);
     done = true;
   }
 }
 
 function switchVideo() {
-  setTimeout(switchVideo, 5000);
+  setTimeout(switchVideo, 15000);
   currVid = (currVid + 1) % vid.length;
   player.loadVideoById(vid[currVid].videoId);
+  document.getElementById("blurb").innerHTML = vid[currVid].message;
   console.log(currVid);
 }
 
